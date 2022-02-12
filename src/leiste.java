@@ -142,7 +142,18 @@ public class leiste<T> extends listutils<T> {
         motor.setNext(frmtemp);
         frmtemp.getNext().setPrev(frmtemp);
 
+    }
+
+    public void swap(int from, int to) {
+
         Item<T> frm = getPredecessor(from++);
+        Item<T> temp = getPredecessor(to++);
+
+        T d1 = frm.getData();
+        T d2 = temp.getData();
+
+        frm.setData(d2);
+        temp.setData(d1);
 
     }
 
