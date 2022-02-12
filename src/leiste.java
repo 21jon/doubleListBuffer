@@ -20,7 +20,7 @@ public class leiste<T> {
     }
 
     public boolean isEmpty() {
-        return head == tail;
+        return head == null && tail == null;
     }
 
     public int size() {
@@ -40,11 +40,17 @@ public class leiste<T> {
     }
 
     public void enque(T data) {
-
         Item<T> neu = new Item<>(data);
 
-        tail.setPrev(neu);
-        neu.setNext(tail);
+        if (isEmpty()) {
+
+            head = neu;
+            tail = neu;
+            return;
+        }
+
+        head.setPrev(neu);
+        tail.setNext(neu);
         tail = neu;
 
     }
@@ -105,6 +111,21 @@ public class leiste<T> {
         next.setPrev(prev);
 
         return torem;
+
+    }
+
+    public void debug() {
+
+        Item<T> runner = head;
+        if (runner == null) {
+            System.out.println("Leer");
+        }
+        while (runner != null) {
+
+            System.out.println(runner.getData());
+            runner = runner.getNext();
+
+        }
 
     }
 
