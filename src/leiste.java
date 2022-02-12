@@ -13,7 +13,7 @@
 
 /*
  * Desiderata:
- * 1) concat(Liste<T> otherList) => void | Mehrere Elemente gleichzeitig anhängen 
+ * ) concat(Liste<T> otherList) => void | Mehrere Elemente gleichzeitig anhängen 
  * 2) get(int index) => T | Element an einer bestimmten Stelle zurückgeben
  * 3) deleteAt(int index) => T | void
  *    // T data = list.deleteAt(5)
@@ -118,6 +118,31 @@ public class leiste<T> extends listutils<T> {
         next.setPrev(prev);
 
         return torem;
+
+    }
+
+    public void move(int from, int to) {
+
+        if (from == to)
+            return;
+
+        if (to > from)
+            to++;
+
+        Item<T> frmtemp = getPredecessor(from++);
+
+        frmtemp.getPrev().setNext(frmtemp.getNext());
+        frmtemp.getNext().setPrev(frmtemp.getPrev());
+
+        Item<T> motor = getPredecessor(to);
+
+        frmtemp.setNext(motor.getNext());
+        frmtemp.setPrev(motor.getPrev());
+
+        motor.setNext(frmtemp);
+        frmtemp.getNext().setPrev(frmtemp);
+
+        Item<T> frm = getPredecessor(from++);
 
     }
 

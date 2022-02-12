@@ -26,7 +26,10 @@ public abstract class listutils<T> {
     }
 
     @Deprecated
-
+    /**
+     * 
+     * @return
+     */
     public int size() {
 
         Item<T> runner = head;
@@ -42,6 +45,12 @@ public abstract class listutils<T> {
         return i;
 
     }
+
+    /**
+     * 
+     * @param index
+     * @return
+     */
 
     public Item<T> getPredecessor(int index) {
         index--;
