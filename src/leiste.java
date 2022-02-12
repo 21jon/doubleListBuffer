@@ -9,6 +9,33 @@ public class leiste<T> {
     Item<T> tail;
 
     public leiste() {
+        clear();
+    }
+
+    public void clear() {
+
+        head = null;
+        tail = null;
+
+    }
+
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
+    public int size() {
+
+        Item<T> runner = head;
+
+        int i = 0;
+        while (runner != null) {
+
+            i++;
+            runner = runner.getNext();
+
+        }
+
+        return i;
 
     }
 
@@ -24,6 +51,9 @@ public class leiste<T> {
 
     public T deque() {
 
+        if (isEmpty())
+            throw new RuntimeException("List is empty");
+
         Item<T> temp = head;
 
         head = head.getPrev();
@@ -32,6 +62,10 @@ public class leiste<T> {
 
         return temp.getData();
 
+    }
+
+    public T top() {
+        return head.getData();
     }
 
 }
