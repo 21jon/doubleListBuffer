@@ -157,6 +157,23 @@ public class leiste<T> extends listutils<T> {
 
     }
 
+    public void set(int index, T data) {
+
+        getPredecessor(index++).setData(data);
+
+    }
+
+    public void insert(int index, T data) {
+
+        Item<T> toin = new Item<>(data);
+        Item<T> prev = getPredecessor(index);
+
+        prev.getNext().setPrev(toin);
+        toin.setNext(prev.getNext());
+        prev.setNext(toin);
+        toin.setPrev(prev);
+    }
+
     public void debug() {
 
         Item<T> runner = head;
