@@ -31,11 +31,15 @@
  */
 
 /**
+ * 
  * leiste
  */
 
 public class leiste<T> extends listutils<T> {
-
+    /**
+     * 
+     * @param data
+     */
     public void enque(T data) {
         Item<T> neu = new Item<>(data);
 
@@ -52,6 +56,10 @@ public class leiste<T> extends listutils<T> {
 
     }
 
+    /**
+     * 
+     * @return
+     */
     public T deque() {
 
         if (isEmpty())
@@ -77,6 +85,10 @@ public class leiste<T> extends listutils<T> {
 
     }
 
+    /**
+     * 
+     * @return
+     */
     public T top() {
         return head.getData();
     }
@@ -90,6 +102,11 @@ public class leiste<T> extends listutils<T> {
 
     }
 
+    /**
+     * 
+     * @param index
+     * @return
+     */
     public T deleteAt(int index) {
 
         Item<T> prev = getPredecessor(index);
@@ -166,9 +183,7 @@ class Item<T> {
     }
 
     /**
-     * 
-     * 
-     * 
+     *
      * @param next
      */
     public void setNext(Item<T> next) {
