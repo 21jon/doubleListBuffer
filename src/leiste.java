@@ -121,7 +121,7 @@ public class leiste<T> extends listutils<T> {
         System.out.print("\n");
 
     }
-
+    // bsw09a
 }
 
 /**
@@ -133,30 +133,60 @@ class Item<T> {
     private Item<T> next;
     private T data;
 
+    /**
+     * 
+     * @param data
+     */
     public Item(T data) {
         this.data = data;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Item<T> getPrev() {
         return prev;
     }
 
+    /**
+     * 
+     * @param prev
+     */
     public void setPrev(Item<T> prev) {
         this.prev = prev;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Item<T> getNext() {
         return next;
     }
 
+    /**
+     * 
+     * 
+     * 
+     * @param next
+     */
     public void setNext(Item<T> next) {
         this.next = next;
     }
 
+    /**
+     * 
+     * @return
+     */
     public T getData() {
         return data;
     }
 
+    /**
+     * 
+     * @param data
+     */
     public void setData(T data) {
         this.data = data;
     }
