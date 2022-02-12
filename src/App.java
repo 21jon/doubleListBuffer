@@ -30,5 +30,10 @@ public class App {
             app.enque(integer);
         }
 
+        System.out.println(app.get(10));
+        System.out.println("--------------------------------------------------");
+        System.out.println(app.deleteAt(10));
+        app.debug();
+
     }
 }

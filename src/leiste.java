@@ -60,6 +60,16 @@ public class leiste<T> {
         if (isEmpty())
             throw new RuntimeException("List is empty");
 
+        if (head == tail) {
+
+            T data = head.getData();
+
+            clear();
+
+            return data;
+
+        }
+
         Item<T> temp = head;
 
         head = head.getPrev();
@@ -76,7 +86,10 @@ public class leiste<T> {
 
     public T get(int index) {
 
-        return getPredecessor(index).getData();
+        if (index < 0)
+            throw new RuntimeException("Jaja");
+
+        return getPredecessor(index + 1).getData();
 
     }
 
