@@ -1,43 +1,40 @@
 
+/*
+ * Challenge 1: Abstrakte Datentypen => Nur Schnittstelle (die öffentlichen Methoden, die er bietet) muss bekannt sein,
+ * nicht die
+ * Implementation (wie es programmiert
+ * ist)
+ *    (Verkettete Liste vs. Array)
+ *
+ * Challenge 2: Haben Sie eine Idee, wie Sie auf die Überprüfungen auf head == null verzichten können?
+ *
+ * Challenge 3: DVK
+ */
+
+/*
+ * Desiderata:
+ * 1) concat(Liste<T> otherList) => void | Mehrere Elemente gleichzeitig anhängen 
+ * 2) get(int index) => T | Element an einer bestimmten Stelle zurückgeben
+ * 3) deleteAt(int index) => T | void
+ *    // T data = list.deleteAt(5)
+ *    // list.deleteAt(5) => Rückgabewert wird verworfen
+ * 4) move(int from, int to)
+ * 5) set(int index, T data) überschreiben
+ * 6) insert(int index, T data)
+ * 7) size() => Größe der Liste
+ * 8) filter() => Auswählen nach Kriterien
+ * 9) get(T data) => Suche nach Daten
+ * 10) indexOf(T data) => Suche nach Index von Daten
+ *
+ * Nice to have:
+ * 1) maxSize()
+ */
+
 /**
  * leiste
  */
 
-public class leiste<T> {
-
-    Item<T> head;
-    Item<T> tail;
-
-    public leiste() {
-        clear();
-    }
-
-    public void clear() {
-
-        head = null;
-        tail = null;
-
-    }
-
-    public boolean isEmpty() {
-        return head == null && tail == null;
-    }
-
-    public int size() {
-
-        Item<T> runner = head;
-
-        int i = 0;
-        while (runner != null) {
-
-            i++;
-            runner = runner.getNext();
-
-        }
-
-        return i;
-
-    }
+public class leiste<T> extends listutils<T> {
 
     public void enque(T data) {
         Item<T> neu = new Item<>(data);
@@ -93,26 +90,6 @@ public class leiste<T> {
 
     }
 
-    private Item<T> getPredecessor(int index) {
-        index--;
-
-        if (isEmpty()) {
-            throw new IndexOutOfBoundsException("Liste ist leer.");
-        }
-
-        if (index >= size()) {
-            throw new IllegalArgumentException("index too high");
-        }
-
-        Item<T> runner = head;
-
-        for (int i = 0; i < index - 1; i++) {
-            runner = runner.getNext();
-        }
-
-        return runner;
-    }
-
     public T deleteAt(int index) {
 
         Item<T> prev = getPredecessor(index);
@@ -133,12 +110,15 @@ public class leiste<T> {
         if (runner == null) {
             System.out.println("Leer");
         }
+        int index = 0;
         while (runner != null) {
 
-            System.out.println(runner.getData());
+            System.out.printf("%d: %s; ", index, runner.getData());
             runner = runner.getNext();
+            index++;
 
         }
+        System.out.print("\n");
 
     }
 
