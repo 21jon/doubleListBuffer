@@ -4,10 +4,10 @@
  * listutils
  */
 
-public abstract class listutils<T> {
+abstract class listutils<T> {
 
-    Item<T> head;
-    Item<T> tail;
+    private Item<T> head;
+    private Item<T> tail;
     int size = 0;
 
     public listutils() {
@@ -70,6 +70,14 @@ public abstract class listutils<T> {
         }
 
         return runner;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
 }

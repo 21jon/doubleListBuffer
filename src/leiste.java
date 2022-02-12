@@ -36,6 +36,10 @@
  */
 
 public class leiste<T> extends listutils<T> {
+    private Item<T> head;
+    private Item<T> tail;
+    int size = 0;
+
     /**
      * 
      * @param data
@@ -50,9 +54,11 @@ public class leiste<T> extends listutils<T> {
             return;
         }
 
-        head.setPrev(neu);
-        tail.setNext(neu);
-        tail = neu;
+        head.setNext(neu);
+        neu.setPrev(head);
+        head = neu;
+
+        size++;
 
     }
 
@@ -67,7 +73,7 @@ public class leiste<T> extends listutils<T> {
 
         if (head == tail) {
 
-            T data = head.getData();
+            T data = tail.getData();
 
             clear();
 
@@ -75,12 +81,13 @@ public class leiste<T> extends listutils<T> {
 
         }
 
-        Item<T> temp = head;
+        Item<T> temp = tail;
 
-        head = head.getPrev();
-        head.setNext(null);
-        head.setPrev(head.getPrev());
+        tail = tail.getNext();
+        tail.setNext(tail.getNext());
+        tail.setPrev(null);
 
+        size--;
         return temp.getData();
 
     }
@@ -117,8 +124,8 @@ public class leiste<T> extends listutils<T> {
         prev.setNext(next);
         next.setPrev(prev);
 
+        size--;
         return torem;
-
     }
 
     public void move(int from, int to) {
@@ -168,10 +175,21 @@ public class leiste<T> extends listutils<T> {
         Item<T> toin = new Item<>(data);
         Item<T> prev = getPredecessor(index);
 
+        if (index - 1 == size()) {
+            enque(data);
+        }
+
         prev.getNext().setPrev(toin);
         toin.setNext(prev.getNext());
         prev.setNext(toin);
         toin.setPrev(prev);
+
+        size++;
+
+    }
+
+    public void insertmany(leiste<T> data) {
+
     }
 
     public void debug() {
@@ -190,6 +208,72 @@ public class leiste<T> extends listutils<T> {
         }
         System.out.print("\n");
 
+    }
+
+    public void clear() {
+        size = 0;
+        head = null;
+        tail = null;
+
+    }
+
+    public boolean isEmpty() {
+        return head == null && tail == null;
+    }
+
+    @Deprecated
+    /**
+     * 
+     * @return
+     */
+    public int size() {
+
+        Item<T> runner = head;
+
+        int i = 0;
+        while (runner != null) {
+
+            i++;
+            runner = runner.getNext();
+
+        }
+
+        return i;
+
+    }
+
+    /**
+     * 
+     * @param index
+     * @return
+     */
+
+    public Item<T> getPredecessor(int index) {
+        index--;
+
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException("Liste ist leer.");
+        }
+
+        if (index >= size()) {
+            throw new IllegalArgumentException("index too high");
+        }
+
+        Item<T> runner = head;
+
+        for (int i = 0; i < index - 1; i++) {
+            runner = runner.getNext();
+        }
+
+        return runner;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
     // bsw09a
 }
