@@ -68,6 +68,28 @@ public class leiste<T> {
         return head.getData();
     }
 
+    public T get(int index) {
+
+        return getPredecessor(index).getData();
+
+    }
+
+    private Item<T> getPredecessor(int index) {
+        index--;
+
+        if (index >= size()) {
+            throw new IllegalArgumentException("index too high");
+        }
+
+        Item<T> runner = head;
+
+        for (int i = 0; i < index - 1; i++) {
+            runner = runner.getNext();
+        }
+
+        return runner;
+    }
+
 }
 
 /**
