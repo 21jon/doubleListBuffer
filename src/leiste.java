@@ -77,6 +77,10 @@ public class leiste<T> {
     private Item<T> getPredecessor(int index) {
         index--;
 
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException("Liste ist leer.");
+        }
+
         if (index >= size()) {
             throw new IllegalArgumentException("index too high");
         }
@@ -88,6 +92,20 @@ public class leiste<T> {
         }
 
         return runner;
+    }
+
+    public T deleteAt(int index) {
+
+        Item<T> prev = getPredecessor(index);
+
+        T torem = prev.getNext().getData();
+        Item<T> next = prev.getNext().getNext();
+
+        prev.setNext(next);
+        next.setPrev(prev);
+
+        return torem;
+
     }
 
 }
