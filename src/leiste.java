@@ -134,7 +134,7 @@ public class leiste<T> extends listutils<T> {
             return;
 
         if (to > from)
-            to++;
+            to--;
 
         Item<T> frmtemp = getPredecessor(from++);
 

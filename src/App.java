@@ -29,11 +29,14 @@ public class App {
         for (Integer integer : numbers) {
             app.enque(integer);
         }
-
+        System.out.println(app.size());
         System.out.println(app.get(10));
         System.out.println("--------------------------------------------------");
         System.out.println(app.deleteAt(10));
         app.debug();
+
+        Thread.sleep(30);
+        Runtime.getRuntime().exec("clear");
 
     }
 }
