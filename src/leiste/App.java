@@ -1,3 +1,5 @@
+package leiste;
+
 public class App {
     public static void main(String[] args) throws Exception {
         leiste<Integer> app = new leiste<>();

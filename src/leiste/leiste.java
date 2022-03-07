@@ -1,3 +1,4 @@
+package leiste;
 
 /*
  * Challenge 1: Abstrakte Datentypen => Nur Schnittstelle (die öffentlichen Methoden, die er bietet) muss bekannt sein,
@@ -221,7 +222,6 @@ public class leiste<T> extends listutils<T> {
         return head == null && tail == null;
     }
 
-    @Deprecated
     /**
      * 
      * @return
